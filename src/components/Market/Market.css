@@ -1,0 +1,491 @@
+.market-section {
+  position: relative;
+  padding: 6rem 2rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, #07647725 60%, #03272e25 99%);
+  color: white;
+  min-height: 100vh;
+}
+
+.market-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.market-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.market-points-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.market-point-card {
+  background: rgba(30, 30, 50, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.market-point-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.5);
+  z-index: 4;
+}
+
+.point-icon-container {
+  margin-bottom: 1.5rem;
+}
+
+.point-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.icon-symbol {
+  font-size: 1.75rem;
+  z-index: 1;
+}
+
+.icon-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  animation: pulse 3s infinite;
+}
+
+.icon-ring::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  border-radius: 50%;
+  border: 1px dashed rgba(16, 185, 129, 0.2);
+  animation: rotate 20s linear infinite;
+}
+
+.point-content {
+  flex: 1;
+}
+
+.point-content p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.point-decoration {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 0;
+}
+
+.quantum-line {
+  position: relative;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.3));
+  transform: rotate(-45deg);
+  transform-origin: left center;
+}
+
+.quantum-dot {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.7);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.market-visual {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.graph-container {
+  position: relative;
+  background: rgba(30, 30, 50, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  min-height: 350px;
+}
+
+.graph-title {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.graph-content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 250px;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.graph-bar {
+  position: relative;
+  width: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 185, 129, 0.8),
+    rgba(16, 185, 129, 0.3)
+  );
+  border-radius: 6px 6px 0 0;
+  transition: height 1s ease;
+}
+
+.graph-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1),
+    transparent,
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: 6px 6px 0 0;
+}
+
+.bar-label {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+
+.graph-projected {
+  background: linear-gradient(
+    180deg,
+    rgba(99, 102, 241, 0.8),
+    rgba(16, 185, 129, 0.3)
+  );
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+
+.graph-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border-radius: 16px;
+}
+
+.cta-container {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.button-text {
+  position: relative;
+  z-index: 1;
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(16, 185, 129, 0.8),
+    rgba(56, 189, 248, 0.8)
+  );
+  z-index: 0;
+  transition: all 0.5s ease;
+}
+
+@media (max-width: 900px) {
+  .market-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .market-intro {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .market-points-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .graph-container {
+    padding: 1.5rem 1rem;
+    min-height: 320px;
+  }
+
+  .graph-content {
+    height: 220px;
+    padding: 0 1rem;
+  }
+
+  .graph-bar {
+    width: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .market-section {
+    padding: 3rem 1rem;
+  }
+
+  .market-points-container {
+    grid-template-columns: 1fr;
+  }
+
+  .market-point-card {
+    min-height: auto;
+    padding: 1.75rem;
+  }
+
+  .point-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon-symbol {
+    font-size: 1.5rem;
+  }
+
+  .market-visual {
+    margin: 3rem 0;
+  }
+
+  .graph-container {
+    padding: 1.25rem 0.75rem;
+    min-height: 320px;
+  }
+
+  .graph-title {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .graph-content {
+    height: 180px;
+    padding: 0 0.5rem;
+  }
+
+  .graph-bar {
+    width: 18px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .bar-label {
+    font-size: 0.7rem;
+    bottom: -25px;
+  }
+
+  .market-cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .graph-container {
+    padding: 1rem 0.5rem;
+    min-height: 280px;
+  }
+
+  .graph-content {
+    height: 150px;
+  }
+
+  .graph-bar {
+    width: 12px;
+  }
+
+  .bar-label {
+    transform: translateX(-50%) rotate(-45deg);
+    transform-origin: center top;
+    bottom: -22px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.fade-in-delayed {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.market-point-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.market-point-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.market-point-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.graph-bar {
+  animation: growUp 1.5s ease-out forwards;
+  transform-origin: bottom;
+  opacity: 0;
+}
+
+@keyframes growUp {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.graph-bar:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.graph-bar:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.graph-bar:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.graph-bar:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+.graph-bar:nth-child(5) {
+  animation-delay: 1s;
+}
+
+.point-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+}
+
+.point-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(16, 185, 129, 0.8), transparent);
+  border-radius: 1px;
+}
+
+@media (max-width: 600px) {
+  .point-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .point-title::after {
+    width: 30px;
+  }
+}

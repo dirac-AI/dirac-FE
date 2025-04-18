@@ -1,0 +1,607 @@
+.roadmap-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #03272e25 1%, #45169125 99%);
+  color: var(--text-primary);
+}
+
+.circuit-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.circuit-node {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 5px rgba(99, 102, 241, 0.8);
+  animation: pulse-node infinite ease-in-out alternate;
+}
+
+@keyframes pulse-node {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0.8;
+  }
+}
+
+.circuit-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.circuit-path {
+  fill: none;
+  stroke-width: 1;
+  stroke-dasharray: 5, 5;
+  animation: dash-animation 30s linear infinite;
+}
+
+.path1 {
+  transform: translate(10%, 10%) scale(2);
+  opacity: 0.4;
+}
+
+.path2 {
+  transform: translate(30%, 50%) scale(2.5) rotate(30deg);
+  opacity: 0.5;
+  animation-delay: -5s;
+}
+
+.path3 {
+  transform: translate(60%, 20%) scale(2) rotate(-15deg);
+  opacity: 0.3;
+  animation-delay: -10s;
+}
+
+.path4 {
+  transform: translate(20%, 70%) scale(3) rotate(10deg);
+  opacity: 0.4;
+  animation-delay: -15s;
+}
+
+@keyframes dash-animation {
+  to {
+    stroke-dashoffset: 200;
+  }
+}
+
+.quantum-wave-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.quantum-wave {
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  opacity: 0.2;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(99, 102, 241, 0.1) 50%,
+    rgba(99, 102, 241, 0) 70%
+  );
+  border-radius: 40%;
+  animation: wave-rotation 20s infinite linear;
+}
+
+.wave1 {
+  top: -20%;
+  left: -20%;
+  animation-duration: 17s;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(99, 102, 241, 0.1) 50%,
+    rgba(99, 102, 241, 0) 70%
+  );
+}
+
+.wave2 {
+  top: -25%;
+  left: -15%;
+  animation-duration: 13s;
+  animation-direction: reverse;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(59, 130, 246, 0.1) 50%,
+    rgba(59, 130, 246, 0) 70%
+  );
+}
+
+.wave3 {
+  top: -30%;
+  left: -10%;
+  animation-duration: 21s;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(236, 72, 153, 0.1) 50%,
+    rgba(236, 72, 153, 0) 70%
+  );
+}
+
+.wave4 {
+  top: -25%;
+  left: -5%;
+  animation-duration: 25s;
+  animation-direction: reverse;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 40%,
+    rgba(16, 185, 129, 0.1) 50%,
+    rgba(16, 185, 129, 0) 70%
+  );
+}
+
+@keyframes wave-rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.roadmap-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+@keyframes underline-pulse {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(70px);
+    opacity: 0.5;
+  }
+}
+
+.roadmap-description {
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.quantum-timeline {
+  width: 100%;
+  position: relative;
+  margin: 3rem 0;
+}
+
+.timeline-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 800px;
+}
+
+.timeline-progress {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #3182ce);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+  transition: width 0.5s ease;
+}
+
+.timeline-nodes {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  opacity: 0.6;
+  transition: opacity 0.5s ease;
+  cursor: pointer;
+}
+
+.timeline-node.active {
+  opacity: 1;
+}
+
+.timeline-marker {
+  position: relative;
+  margin-bottom: 1.5rem;
+  margin-top: -10px;
+}
+
+.marker-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(40, 40, 80, 0.5);
+  border: 2px solid rgba(99, 102, 241, 0.5);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.timeline-node.active .marker-dot {
+  background: #6366f1;
+  border-color: white;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.8);
+}
+
+.marker-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.3);
+  opacity: 0;
+}
+
+.timeline-node.active .marker-pulse {
+  animation: marker-pulse 2s infinite;
+}
+
+@keyframes marker-pulse {
+  0% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(3);
+  }
+}
+
+.timeline-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.timeline-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-weight: 600;
+}
+
+.timeline-card {
+  background: rgba(30, 30, 50, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 200px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-node.active .timeline-card {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(99, 102, 241, 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.timeline-node.active .card-glow {
+  opacity: 1;
+}
+
+.timeline-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-dot {
+  min-width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6366f1;
+  margin-right: 8px;
+  margin-top: 6px;
+}
+
+.timeline-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2rem;
+}
+
+.timeline-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.timeline-indicator.active {
+  background: #6366f1;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.8);
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fade-in 1s forwards;
+}
+
+.fade-in-delay-1 {
+  opacity: 0;
+  animation: fade-in 1s forwards 0.3s;
+}
+
+.fade-in-delay-2 {
+  opacity: 0;
+  animation: fade-in 1s forwards 0.6s;
+}
+
+.fade-in-delay-3 {
+  opacity: 0;
+  animation: fade-in 1s forwards 0.9s;
+}
+
+.fade-in-delay-4 {
+  opacity: 0;
+  animation: fade-in 1s forwards 1.2s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.arrow-down {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  transform: rotate(45deg);
+  margin-top: 10px;
+  animation: arrow-pulse 1.5s infinite;
+}
+
+@keyframes arrow-pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 992px) {
+  .timeline-nodes {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .timeline-track {
+    display: none;
+  }
+
+  .timeline-node {
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .timeline-marker {
+    margin-right: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .timeline-content {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .circuit-path {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .roadmap-description {
+    font-size: 1rem;
+  }
+
+  .timeline-card {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .timeline-title {
+    font-size: 1.1rem;
+  }
+
+  .timeline-item {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .roadmap-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 4rem 0;
+  }
+
+  .timeline-nodes {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .timeline-track {
+    display: none;
+  }
+
+  .timeline-node {
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    opacity: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-marker {
+    margin-right: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .timeline-content {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .timeline-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .roadmap-content {
+    padding: 0 1.5rem;
+  }
+
+  .circuit-path {
+    opacity: 0.15;
+  }
+
+  .circuit-node {
+    animation-duration: 5s;
+  }
+}
+
+@media (max-width: 576px) {
+  .roadmap-description {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+  }
+
+  .timeline-item {
+    font-size: 0.8rem;
+  }
+
+  .circuit-background {
+    opacity: 0.5;
+  }
+
+  .roadmap-content {
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+
+  .timeline-indicators {
+    margin-bottom: 2rem;
+  }
+}

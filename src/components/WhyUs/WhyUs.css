@@ -1,0 +1,259 @@
+
+.why-us-section {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, #02303325 60%, #1e232425 99%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantum-particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.quantum-particles-canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.whyus-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.title-wrapper {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header-underline {
+  height: 3px;
+  width: 100px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  margin: 0 auto;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cards-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.second-row {
+  
+  justify-content: center;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.quantum-card {
+  flex: 1;
+  background: rgba(30, 30, 50, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  max-width: 400px;
+  min-width: 280px;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
+  z-index: 1;
+}
+
+.quantum-card:hover {
+  transform: translateY(-8px);
+  background: rgba(40, 40, 70, 0.4);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.quantum-card:hover .card-glow {
+  opacity: 1;
+}
+
+.card-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle at center,
+    rgba(99, 102, 241, 0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.quantum-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.card-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+  margin: 1rem 0;
+}
+
+.quantum-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-delay-0 { animation: fadeIn 0.6s ease forwards; animation-delay: 0.1s; opacity: 0; }
+.fade-in-delay-1 { animation: fadeIn 0.6s ease forwards; animation-delay: 0.2s; opacity: 0; }
+.fade-in-delay-2 { animation: fadeIn 0.6s ease forwards; animation-delay: 0.3s; opacity: 0; }
+.fade-in-delay-3 { animation: fadeIn 0.6s ease forwards; animation-delay: 0.4s; opacity: 0; }
+.fade-in-delay-4 { animation: fadeIn 0.6s ease forwards; animation-delay: 0.5s; opacity: 0; }
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.cards-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  padding: 1rem 0;
+  margin: 0 -1rem; 
+  will-change: scroll-position; 
+}
+
+.cards-carousel::-webkit-scrollbar {
+  display: none; 
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  width: 100%;
+  will-change: transform; 
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicator.active {
+  background-color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+
+@media (max-width: 1200px) {
+  .quantum-card {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 900px) {
+  .second-row {
+    padding: 0;
+  }
+  
+  .quantum-card {
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-us-section {
+    padding: 4rem 1rem;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .quantum-card {
+    max-width: none;
+    min-width: 0;
+    height: auto;
+  }
+  
+  .cards-carousel .quantum-card {
+    margin: 0;
+    height: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .quantum-card h2 {
+    font-size: 1.3rem;
+  }
+  
+  .quantum-card p {
+    font-size: 0.95rem;
+  }
+  
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+}
