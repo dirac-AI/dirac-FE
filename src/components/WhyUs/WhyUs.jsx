@@ -180,7 +180,8 @@ const WhyUs = () => {
   const [isMobile, setIsMobile] = useState(false);
   const carouselRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const autoScrollInterval = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const scrollEndTimer = useRef(null);
 
   const cards = [
     {
@@ -232,43 +233,54 @@ const WhyUs = () => {
     };
   }, []);
 
-  // Scroll to active card with improved scrolling
-  useEffect(() => {
-    if (isMobile && carouselRef.current) {
-      const scrollPosition = activeIndex * carouselRef.current.offsetWidth;
+  // Handle touch/mouse events for smooth dragging
+  const handleTouchStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Updated scroll handler
+  const handleScroll = () => {
+    if (!carouselRef.current || !isMobile) return;
+    
+    // Clear any existing timer
+    clearTimeout(scrollEndTimer.current);
+    
+    // Set a timer to detect when scrolling has ended
+    scrollEndTimer.current = setTimeout(() => {
+      // Always snap to nearest card when scrolling stops
+      const scrollPosition = carouselRef.current.scrollLeft;
+      const cardWidth = carouselRef.current.offsetWidth;
+      const newIndex = Math.round(scrollPosition / cardWidth);
+      
+      // Ensure index is within bounds
+      const boundedIndex = Math.max(0, Math.min(newIndex, cards.length - 1));
+      
+      setActiveIndex(boundedIndex);
+      
+      // Always snap to the nearest card position
+      const targetPosition = boundedIndex * cardWidth;
+      if (Math.abs(scrollPosition - targetPosition) > 1) { // Only scroll if not already at position
+        carouselRef.current.scrollTo({
+          left: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 150); // Wait 150ms after scrolling stops
+  };
+
+  // Navigate to specific card
+  const navigateToCard = (index) => {
+    setActiveIndex(index);
+    if (carouselRef.current) {
+      const scrollPosition = index * carouselRef.current.offsetWidth;
       carouselRef.current.scrollTo({
         left: scrollPosition,
         behavior: 'smooth'
       });
-    }
-  }, [activeIndex, isMobile]);
-
-  // Optimized scroll handler with throttling
-  const handleScroll = () => {
-    if (!carouselRef.current || !isMobile) return;
-    
-    // Clear the auto-scroll interval when user manually scrolls
-    if (autoScrollInterval.current) {
-      clearInterval(autoScrollInterval.current);
-    }
-    
-    // Calculate which card is most visible
-    const scrollPosition = carouselRef.current.scrollLeft;
-    const cardWidth = carouselRef.current.offsetWidth;
-    const newIndex = Math.round(scrollPosition / cardWidth);
-    
-    if (newIndex !== activeIndex && newIndex >= 0 && newIndex < cards.length) {
-      setActiveIndex(newIndex);
-    }
-  };
-
-  // Throttled scroll handler for better performance
-  const throttledHandleScroll = () => {
-    if (!carouselRef.current._scrollTimeout) {
-      carouselRef.current._scrollTimeout = setTimeout(() => {
-        handleScroll();
-        carouselRef.current._scrollTimeout = null;
-      }, 100);
     }
   };
 
@@ -303,7 +315,11 @@ const WhyUs = () => {
             <div 
               className="cards-carousel" 
               ref={carouselRef}
-              onScroll={throttledHandleScroll}
+              onScroll={handleScroll}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleTouchStart}
+              onMouseUp={handleTouchEnd}
             >
               {cards.map((card, index) => (
                 <div className="carousel-item" key={`carousel-card-${index}`}>
@@ -321,7 +337,7 @@ const WhyUs = () => {
                 <button 
                   key={`indicator-${index}`}
                   className={`carousel-indicator ${index === activeIndex ? 'active' : ''}`}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => navigateToCard(index)}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}

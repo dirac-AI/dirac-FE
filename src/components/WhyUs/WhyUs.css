@@ -162,13 +162,30 @@
 .cards-carousel {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity; /* Changed from mandatory to proximity */
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; 
   -ms-overflow-style: none; 
   padding: 1rem 0;
   margin: 0 -1rem; 
-  will-change: scroll-position; 
+  will-change: scroll-position;
+  scroll-behavior: auto; /* Changed from smooth to auto for better drag control */
+}
+
+.cards-carousel::-webkit-scrollbar {
+  display: none; 
+}
+
+.cards-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: none; /* Removed snap during scrolling */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  padding: 1rem 0;
+  margin: 0 -1rem; 
+  will-change: scroll-position;
 }
 
 .cards-carousel::-webkit-scrollbar {
