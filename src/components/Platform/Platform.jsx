@@ -9,11 +9,11 @@ const Platform = () => {
         id: 1,
         title: "Browser-Based IDE (Dirac Web Studio)",
         description: "Our intuitive web interface (powered by Rust & WASM) lets you visually design circuits or write quantum code in Python-like syntax. Visualize outcomes, track qubit states, and experiment with advanced algorithms in just a few clicks.",
-        bulletPoints: [
-          "Drag-and-Drop Circuit Builder: Great for quick prototyping or teaching quantum concepts.",
-          "Text Editor with Syntax Highlighting: Familiar code-based approach for advanced users—no extra installations needed.",
-          "One-Click Sharing: Publish circuits to the model hub or share them privately with your team."
-        ],
+        // bulletPoints: [
+        //   "Drag-and-Drop Circuit Builder: Great for quick prototyping or teaching quantum concepts.",
+        //   "Text Editor with Syntax Highlighting: Familiar code-based approach for advanced users—no extra installations needed.",
+        //   "One-Click Sharing: Publish circuits to the model hub or share them privately with your team."
+        // ],
         icon: "💻",
         color: "var(--color-purple)"
       },
@@ -61,7 +61,6 @@ const Platform = () => {
         <div className="platform-features-grid">
           {platformData.features.map((feature, index) => (
             <div key={feature.id} className="platform-feature fade-in-delayed" style={{"--delay": `${index * 0.1 + 0.2}s`}}>
-              <div className="feature-number" style={{"--feature-color": feature.color}}>4.{feature.id}</div>
               
               <div className="feature-header">
                 <div className="feature-icon-wrapper" style={{"--feature-color": feature.color}}>

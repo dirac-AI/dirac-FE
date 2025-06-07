@@ -1,23 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Home.css';
+import navbarLogo from "/navbar-logo.png"
 
-const OptimizedQuantumVisualization = () => {
+const OptimizedQuantumVisualization = ({ isMobile }) => {
   const rotationRef = useRef(0);
   const [styleVars, setStyleVars] = useState({
     '--rotation': '0deg',
     '--pulse-size': '1',
     '--glow-intensity': '10px',
   });
-  const [isMobile, setIsMobile] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth <= 1000);
-    };
-    
-    checkIfMobile();
-    
     let animationFrameId;
     let lastTimestamp = 0;
     const ROTATION_SPEED = 0.02;
@@ -38,41 +32,28 @@ const OptimizedQuantumVisualization = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    if (!isMobile) {
-      animationFrameId = requestAnimationFrame(animate);
-    }
+    animationFrameId = requestAnimationFrame(animate);
 
-    window.addEventListener('resize', checkIfMobile);
-    
     return () => {
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', checkIfMobile);
     };
-  }, [isMobile, isHovered]);
-
-  if (isMobile) {
-    return null;
-  }
+  }, [isHovered]);
 
   return (
     <div 
-      className="quantum-visualization" 
+      className={`quantum-visualization ${isMobile ? 'mobile-quantum' : ''}`}
       style={styleVars}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Single 3D object instead of 6 faces */}
+      <div className="logo-container">
+        <img src={navbarLogo} alt="DIRAC Logo" className="logo-image-hero"/>
+      </div>
+      
       <div className="quantum-sphere">
         <div className="quantum-ring horizontal"></div>
         <div className="quantum-ring vertical"></div>
         <div className="quantum-ring diagonal"></div>
-        
-        {/* Just 3 qubits instead of 6 */}
-        <div className="quantum-core">
-          <div className="qubit qubit-1"></div>
-          <div className="qubit qubit-2"></div>
-          <div className="qubit qubit-3"></div>
-        </div>
         
         <div className="quantum-particles"></div>
       </div>
@@ -114,13 +95,11 @@ const Home = () => {
           </p>
         </div>
         
-        {!isMobile && (
-          <div className="hero-image fade-in-delay-1">
-            <div className="float-animation">
-              <OptimizedQuantumVisualization />
-            </div>
+        <div className={`hero-image fade-in-delay-1 ${isMobile ? 'mobile-hero-image' : ''}`}>
+          <div className="float-animation">
+            <OptimizedQuantumVisualization isMobile={isMobile} />
           </div>
-        )}
+        </div>
       </div>
       
       <div className="scroll-indicator">

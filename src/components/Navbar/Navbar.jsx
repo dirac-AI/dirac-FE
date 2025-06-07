@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import navbarLogo from "/navbar-logo.png"
 import './Navbar.css';
 
 const Navbar = () => {
@@ -37,6 +38,13 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -52,7 +60,14 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        <div className="logo">DIRAC</div>
+        {/* <div className="logo-wrapper"  onClick={scrollToTop}> */}
+        <div className={`logo-wrapper ${menuOpen ? 'open' : ''}`}  onClick={scrollToTop}>
+          <img src={navbarLogo} alt="DIRAC Logo" className="logo-image"/>
+          <div className="logo-text-container">
+            <div className="logo-text-primary">DIRAC</div>
+            <div className="logo-text-secondary">Agentic AI for Computing</div>
+          </div>
+        </div>
         
         <div className="mobile-menu-button" onClick={toggleMenu}>
           <div className={`hamburger ${menuOpen ? 'active' : ''}`}>

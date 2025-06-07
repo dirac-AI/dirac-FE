@@ -15,6 +15,8 @@ const Contact = () => {
     message: ''
   });
 
+  const [activeTab, setActiveTab] = useState('form'); // For mobile tabs
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
@@ -62,11 +64,29 @@ const Contact = () => {
         
         <div className="contact-intro">
           <p>Got a question or a project in mind? Interested in enterprise solutions or a research partnership?</p>
-          <p>We're always open to new collaborations—hardware vendors, universities, or private sector R&D teams. Let's shape the quantum future together.</p>
+          <p className="intro-secondary">We're always open to new collaborations—hardware vendors, universities, or private sector R&D teams. Let's shape the quantum future together.</p>
         </div>
         
-        <div className="contact-container">
-          <div className="contact-form-container">
+        {/* Mobile Tab Navigation */}
+        <div className="mobile-tabs">
+          <button 
+            className={`tab-button ${activeTab === 'form' ? 'active' : ''}`}
+            onClick={() => setActiveTab('form')}
+          >
+            <span className="tab-icon">✉️</span>
+            <span>Message</span>
+          </button>
+          <button 
+            className={`tab-button ${activeTab === 'info' ? 'active' : ''}`}
+            onClick={() => setActiveTab('info')}
+          >
+            <span className="tab-icon">📍</span>
+            <span>Info</span>
+          </button>
+        </div>
+        
+        <div className={`contact-container ${activeTab}`}>
+          <div className={`contact-form-container ${activeTab === 'form' ? 'active' : ''}`}>
             <div className="form-card">
               <h3>Send Us a Message</h3>
               
@@ -77,30 +97,32 @@ const Contact = () => {
               )}
               
               <form onSubmit={handleSubmit} className="contact-form">
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your Name"
-                    required
-                  />
-                </div>
-                
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="your.email@example.com"
-                    required
-                  />
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
                 </div>
                 
                 <div className="form-group">
@@ -124,7 +146,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your project or question..."
-                    rows="5"
+                    rows="4"
                     required
                   ></textarea>
                 </div>
@@ -137,32 +159,40 @@ const Contact = () => {
             </div>
           </div>
           
-          <div className="contact-info">
-            <div className="info-card">
-              <div className="info-icon">✉️</div>
-              <h3>Email Us</h3>
-              <p><a href="mailto:hello@dirac.au">hello@dirac.au</a></p>
-            </div>
-            
-            <div className="info-card">
-              <div className="info-icon">📍</div>
-              <h3>Visit Us</h3>
-              <p>Dirac HQ, Sydney, Australia</p>
-            </div>
-            
-            <div className="info-card">
-              <div className="info-icon">💬</div>
-              <h3>Connect</h3>
-              <div className="social-links">
-                <a href="#" className="social-link" aria-label="Twitter">
-                  <span className="social-icon">𝕏</span>
-                </a>
-                <a href="#" className="social-link" aria-label="LinkedIn">
-                  <span className="social-icon">in</span>
-                </a>
-                <a href="#" className="social-link" aria-label="GitHub">
-                  <span className="social-icon">⌨</span>
-                </a>
+          <div className={`contact-info ${activeTab === 'info' ? 'active' : ''}`}>
+            <div className="info-grid">
+              <div className="info-card primary">
+                <div className="info-icon">✉️</div>
+                <h3>Email Us</h3>
+                <p><a href="mailto:hello@dirac.au">hello@dirac.au</a></p>
+              </div>
+              
+              <div className="info-card">
+                <div className="info-icon">📍</div>
+                <h3>Visit Us</h3>
+                <p>Dirac HQ, Sydney, Australia</p>
+              </div>
+              
+              <div className="info-card">
+                <div className="info-icon">🕐</div>
+                <h3>Office Hours</h3>
+                <p>Mon-Fri: 9AM-6PM AEST</p>
+              </div>
+              
+              <div className="info-card social-card">
+                <div className="info-icon">💬</div>
+                <h3>Connect</h3>
+                <div className="social-links">
+                  <a href="#" className="social-link" aria-label="Twitter">
+                    <span className="social-icon">𝕏</span>
+                  </a>
+                  <a href="#" className="social-link" aria-label="LinkedIn">
+                    <span className="social-icon">in</span>
+                  </a>
+                  <a href="#" className="social-link" aria-label="GitHub">
+                    <span className="social-icon">⌨</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

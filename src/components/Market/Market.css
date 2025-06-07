@@ -242,21 +242,6 @@
   z-index: 1;
 }
 
-.button-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    45deg,
-    rgba(16, 185, 129, 0.8),
-    rgba(56, 189, 248, 0.8)
-  );
-  z-index: 0;
-  transition: all 0.5s ease;
-}
-
 @media (max-width: 900px) {
   .market-section {
     padding: 4rem 1.5rem;
@@ -487,5 +472,37 @@
 
   .point-title::after {
     width: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .market-visual {
+    display: none;
+  }
+}
+
+/* Center last bullet point on mobile and tablet */
+@media (max-width: 1024px) {
+  .market-points-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .market-point-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .market-points-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .market-point-card:last-child {
+    grid-column: 1;
+    max-width: none;
+    margin: 0;
   }
 }
