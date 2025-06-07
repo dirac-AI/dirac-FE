@@ -44,12 +44,12 @@
   margin-bottom: 3rem;
 }
 
-.header-underline {
+/* .header-underline {
   height: 3px;
   width: 100px;
   background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
   margin: 0 auto;
-}
+} */
 
 .cards-container {
   display: flex;

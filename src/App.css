@@ -95,6 +95,18 @@ section h2 {
   }
 }
 
+@keyframes underline-pulse {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: calc(100% - 10px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
 .float-animation {
   animation: float 6s ease-in-out infinite;
 }
@@ -122,14 +134,13 @@ section h2 {
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 } */
 
-.header-underline {
+/* .header-underline {
   height: 3px;
   width: 80px;
   background: linear-gradient(90deg, #6366f1, #3182ce);
-  margin: 0 auto;
   border-radius: 2px;
   position: relative;
-}
+} */
 
 .header-underline::before {
   content: "";
@@ -143,6 +154,7 @@ section h2 {
 }
 
 .header-underline {
+  position: relative;
   height: 3px;
   width: 60%;
   max-width: 200px;
@@ -154,6 +166,7 @@ section h2 {
     transparent
   );
   border-radius: 2px;
+  margin: 0 auto;
 }
 
 .cta-button {

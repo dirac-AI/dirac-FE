@@ -34,12 +34,12 @@
   color: white;
 }
 
-.header-underline {
+/* .header-underline {
   height: 3px;
   width: 100px;
   background: linear-gradient(90deg, transparent, #6366f1, transparent);
   margin: 0 auto;
-}
+} */
 
 .particle-container {
   position: absolute;
