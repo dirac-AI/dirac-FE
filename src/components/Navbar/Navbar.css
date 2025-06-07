@@ -291,6 +291,10 @@
     border-radius: 14px;
   }
 
+  .mobile-nav-popup .nav-links a {
+    padding: 0.4rem 0rem;
+  }
+
   .navbar.scrolled {
     top: 8px;
     padding: 0.6rem 1rem;

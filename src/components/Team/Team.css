@@ -437,7 +437,7 @@
 @media (max-width: 768px) {
   .team-locations-section {
     padding: 4rem 1rem;
-    min-height: auto;
+    min-height: 1000px;
   }
 
   .team-mission-statement {
