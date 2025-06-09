@@ -1,5 +1,5 @@
 .team-locations-section {
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
   padding: 2rem;
   overflow: hidden;

@@ -196,18 +196,26 @@
   transition: opacity 0.3s, visibility 0.3s;
 }
 
-
 .mobile-nav-popup.open {
   opacity: 1;
   visibility: visible;
 }
 
-.mobile-nav-popup .nav-links {
+/* Two-column grid layout for mobile nav */
+.mobile-nav-grid {
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.mobile-nav-popup .nav-links {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 0.5rem;
 }
 
 .mobile-nav-popup .nav-links li {
@@ -279,7 +287,6 @@
   .navbar.scrolled .logo-text-secondary {
     font-size: 0.65rem;
   }
-
 }
 
 @media (max-width: 480px) {
@@ -291,12 +298,19 @@
     border-radius: 14px;
   }
 
-  .mobile-nav-popup .nav-links a {
-    padding: 0.4rem 0rem;
-  }
-
   .navbar.scrolled {
     top: 8px;
     padding: 0.6rem 1rem;
+  }
+
+  /* Adjust mobile grid for smaller screens */
+  .mobile-nav-grid {
+    gap: 2rem;
+  }
+
+  .mobile-nav-popup .nav-links a {
+    padding: 0.8rem 1.5rem;
+    min-width: 150px;
+    font-size: 1.1rem;
   }
 }

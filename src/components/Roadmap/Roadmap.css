@@ -1,5 +1,5 @@
 .roadmap-section {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,6 +7,7 @@
   overflow: hidden;
   background: linear-gradient(180deg, #03272e25 1%, #45169125 99%);
   color: var(--text-primary);
+  min-height: 100vh;
 }
 
 .circuit-background {

@@ -280,6 +280,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
+
+  .pricing-card {
+    min-width: auto;
+    max-width: 500px;
+  }
 }
 
 @media (max-width: 600px) {

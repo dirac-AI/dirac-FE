@@ -42,15 +42,7 @@ const BusinessModel = () => {
             <ul className="features-list">
               <li>
                 <span className="feature-bullet"></span>
-                Private Repos & Collaboration Tools
-              </li>
-              <li>
-                <span className="feature-bullet"></span>
                 Larger/Unlimited Simulation Quotas
-              </li>
-              <li>
-                <span className="feature-bullet"></span>
-                Faster, Priority Compute Access
               </li>
               <li>
                 <span className="feature-bullet"></span>

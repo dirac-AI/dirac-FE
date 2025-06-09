@@ -91,18 +91,22 @@ const Navbar = () => {
         </ul>
 
         <div className={`mobile-nav-popup ${menuOpen ? 'open' : ''}`}>
-          <ul className="nav-links">
-            <li><a href="#home" onClick={toggleMenu}>Home</a></li>
-            <li><a href="#about" onClick={toggleMenu}>About</a></li>
-            <li><a href="#why" onClick={toggleMenu}>Why Us</a></li>
-            <li><a href="#platform" onClick={toggleMenu}>Platform</a></li>
-            <li><a href="#market" onClick={toggleMenu}>Market</a></li>
-            <li><a href="#roadmap" onClick={toggleMenu}>Roadmap</a></li>
-            <li><a href="#business" onClick={toggleMenu}>Business Model</a></li>
-            <li><a href="#team" onClick={toggleMenu}>Team</a></li>
-            <li><a href="#community" onClick={toggleMenu}>Community</a></li>
-            <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
-          </ul>
+          <div className="mobile-nav-grid">
+            <ul className="nav-links nav-column-1">
+              <li><a href="#home" onClick={toggleMenu}>Home</a></li>
+              <li><a href="#about" onClick={toggleMenu}>About</a></li>
+              <li><a href="#why" onClick={toggleMenu}>Why Us</a></li>
+              <li><a href="#platform" onClick={toggleMenu}>Platform</a></li>
+              <li><a href="#market" onClick={toggleMenu}>Market</a></li>
+            </ul>
+            <ul className="nav-links nav-column-2">
+              <li><a href="#roadmap" onClick={toggleMenu}>Roadmap</a></li>
+              <li><a href="#business" onClick={toggleMenu}>Business Model</a></li>
+              <li><a href="#team" onClick={toggleMenu}>Team</a></li>
+              <li><a href="#community" onClick={toggleMenu}>Community</a></li>
+              <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
