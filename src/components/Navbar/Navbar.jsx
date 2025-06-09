@@ -91,21 +91,51 @@ const Navbar = () => {
         </ul>
 
         <div className={`mobile-nav-popup ${menuOpen ? 'open' : ''}`}>
+          <div className="mobile-nav-background">
+            <div className="subtle-accent accent-1"></div>
+            <div className="subtle-accent accent-2"></div>
+            <div className="subtle-accent accent-3"></div>
+            <div className="subtle-accent accent-4"></div>
+            <div className="grid-pattern"></div>
+          </div>
           <div className="mobile-nav-grid">
             <ul className="nav-links nav-column-1">
-              <li><a href="#home" onClick={toggleMenu}>Home</a></li>
-              <li><a href="#about" onClick={toggleMenu}>About</a></li>
-              <li><a href="#why" onClick={toggleMenu}>Why Us</a></li>
-              <li><a href="#platform" onClick={toggleMenu}>Platform</a></li>
-              <li><a href="#market" onClick={toggleMenu}>Market</a></li>
+              <li><a href="#home" onClick={toggleMenu}>
+                <span className="nav-icon">🏠</span>Home
+              </a></li>
+              <li><a href="#about" onClick={toggleMenu}>
+                <span className="nav-icon">💡</span>About
+              </a></li>
+              <li><a href="#why" onClick={toggleMenu}>
+                <span className="nav-icon">⭐</span>Why Us
+              </a></li>
+              <li><a href="#platform" onClick={toggleMenu}>
+                <span className="nav-icon">🚀</span>Platform
+              </a></li>
+              <li><a href="#market" onClick={toggleMenu}>
+                <span className="nav-icon">📈</span>Market
+              </a></li>
             </ul>
             <ul className="nav-links nav-column-2">
-              <li><a href="#roadmap" onClick={toggleMenu}>Roadmap</a></li>
-              <li><a href="#business" onClick={toggleMenu}>Business Model</a></li>
-              <li><a href="#team" onClick={toggleMenu}>Team</a></li>
-              <li><a href="#community" onClick={toggleMenu}>Community</a></li>
-              <li><a href="#contact" onClick={toggleMenu}>Contact</a></li>
+              <li><a href="#roadmap" onClick={toggleMenu}>
+                <span className="nav-icon">🗺️</span>Roadmap
+              </a></li>
+              <li><a href="#business" onClick={toggleMenu}>
+                <span className="nav-icon">💼</span>Business
+              </a></li>
+              <li><a href="#team" onClick={toggleMenu}>
+                <span className="nav-icon">👥</span>Team
+              </a></li>
+              <li><a href="#community" onClick={toggleMenu}>
+                <span className="nav-icon">🌐</span>Community
+              </a></li>
+              <li><a href="#contact" onClick={toggleMenu}>
+                <span className="nav-icon">📧</span>Contact
+              </a></li>
             </ul>
+          </div>
+          <div className="mobile-nav-footer">
+            <div className="brand-tagline">Agentic AI for Computing</div>
           </div>
         </div>
       </div>
