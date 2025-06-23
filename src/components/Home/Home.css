@@ -103,12 +103,16 @@
 .hero-text h1 {
   font-size: 3.5rem;
   line-height: 1.2;
-  margin-bottom: 1.5rem;
   background: linear-gradient(to right, #ffffff, #b3b3b3);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
+}
+
+.hero-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero-text p {
@@ -244,7 +248,6 @@
   transform: rotateX(var(--rotation)) rotateY(calc(var(--rotation) * 1.5));
 }
 
-/* Static logo container - not affected by rotation */
 .logo-container {
   position: absolute;
   top: 50%;
@@ -327,7 +330,6 @@
   }
 }
 
-/* Media Queries */
 @media (max-width: 1000px) {
   .home-section {
     min-height: 100vh;
@@ -337,7 +339,11 @@
 
   .hero-text h1 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
   }
 
   .hero-text p {
@@ -355,6 +361,10 @@
     font-size: 2.2rem;
   }
 
+  .hero-text h3 {
+    font-size: 1.2rem;
+  }
+
   .hero-text p {
     font-size: 1rem;
   }
@@ -368,6 +378,10 @@
 @media (max-width: 480px) {
   .hero-text h1 {
     font-size: 1.8rem;
+  }
+
+  .hero-text h3 {
+    font-size: 1.2rem;
   }
 
   .hero-text p {

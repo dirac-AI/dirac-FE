@@ -270,21 +270,14 @@
   transform: translateY(-3px) scale(1.1);
 }
 
-
-.submit-button {
+.cta-button.contact {
   position: relative;
-  padding: 1rem 2rem;
   background: linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8));
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
   margin-top: 0.75rem;
   width: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  padding: 1rem 2rem;
 }
 
 .button-text {

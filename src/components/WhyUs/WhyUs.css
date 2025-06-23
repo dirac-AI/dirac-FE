@@ -3,7 +3,7 @@
   position: relative;
   padding: 0;
   overflow: hidden;
-  background: linear-gradient(180deg, #02303325 60%, #1e232425 99%);
+  background: linear-gradient(180deg, #02303325 60%, #03272e25 99%);
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -43,13 +43,6 @@
   text-align: center;
   margin-bottom: 3rem;
 }
-
-/* .header-underline {
-  height: 3px;
-  width: 100px;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-  margin: 0 auto;
-} */
 
 .cards-container {
   display: flex;
@@ -162,14 +155,14 @@
 .cards-carousel {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: x proximity; /* Changed from mandatory to proximity */
+  scroll-snap-type: x proximity; 
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; 
   -ms-overflow-style: none; 
   padding: 1rem 0;
   margin: 0 -1rem; 
   will-change: scroll-position;
-  scroll-behavior: auto; /* Changed from smooth to auto for better drag control */
+  scroll-behavior: auto;
 }
 
 .cards-carousel::-webkit-scrollbar {
@@ -179,7 +172,7 @@
 .cards-carousel {
   display: flex;
   overflow-x: auto;
-  scroll-snap-type: none; /* Removed snap during scrolling */
+  scroll-snap-type: none; 
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; 
   -ms-overflow-style: none; 

@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Team.css';
 
 const Team = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [activeLocation, setActiveLocation] = useState('australia');
-  const nodesRef = useRef(null);
   
-  // Location data with adjusted coordinates
   const locations = {
     australia: {
       title: "Headquarters",
@@ -21,7 +19,7 @@ const Team = () => {
       location: "Singapore",
       description: "Quantum scientists and Rust engineers driving innovation.",
       leadership: "CTO: Oversees quantum R&D and core tech.",
-      coordinates: { x: 40, y: 45 }, // Adjusted to be further away
+      coordinates: { x: 40, y: 45 },
       icon: "🔬"
     },
     indonesia: {
@@ -29,12 +27,11 @@ const Team = () => {
       location: "Indonesia",
       description: "Full-stack development, QA, DevOps, and support.",
       leadership: "VP Engineering: Manages platform development and operations.",
-      coordinates: { x: 75, y: 35 }, // Adjusted to be further away
+      coordinates: { x: 75, y: 35 },
       icon: "💻"
     }
   };
 
-  // Check if screen is mobile
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -45,14 +42,13 @@ const Team = () => {
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  // Animate the location nodes in a slight circular motion
   useEffect(() => {
     if (!isMobile) {
       const animateNodes = () => {
         const nodes = document.querySelectorAll('.location-node');
         
         nodes.forEach((node, index) => {
-          const baseDelay = index * 2; // Stagger the animation
+          const baseDelay = index * 2;
           const animate = () => {
             const time = Date.now() / 1000;
             const originalX = parseFloat(node.dataset.originalX || node.style.left);
@@ -63,9 +59,8 @@ const Team = () => {
               node.dataset.originalY = originalY;
             }
             
-            // Small circular motion
-            const radius = 2; // Radius of the circular motion (small)
-            const frequency = 0.2; // Speed of the motion
+            const radius = 2;
+            const frequency = 0.2;
             const offsetX = radius * Math.sin(time * frequency + baseDelay);
             const offsetY = radius * Math.cos(time * frequency + baseDelay);
             
@@ -79,7 +74,6 @@ const Team = () => {
         });
       };
       
-      // Start the animation when nodes are ready
       const nodesInit = setInterval(() => {
         if (document.querySelectorAll('.location-node').length > 0) {
           clearInterval(nodesInit);
@@ -107,7 +101,6 @@ const Team = () => {
         </div>
 
         {isMobile ? (
-          // Mobile view - Tabbed interface
           <div className="location-tabs">
             <div className="tab-buttons">
               {Object.keys(locations).map((key) => (
@@ -140,7 +133,6 @@ const Team = () => {
             </div>
           </div>
         ) : (
-          // Desktop view - Interactive Globe
           <div className="globe-container">
             <div className="globe-visualization">
               <div className="globe-ring-outer"></div>

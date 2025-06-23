@@ -18,16 +18,16 @@ const Community = () => {
           },
           {
             id: "models",
-            title: "Publish Your Models",
-            description: "Showcase your quantum algorithms and get feedback from peers.",
-            icon: "🧬",
+            title: "Share Your Experience",
+            description: "Share what you've built! Your work could spark new ideas.",
+            icon: "💡",
             color: "var(--color-blue)"
           },
           {
-            id: "rust",
-            title: "Collaborate on Rust Core",
-            description: "All are welcome to submit PRs, test new features, or suggest improvements.",
-            icon: "🦀",
+            id: "collaborate",
+            title: "Request New Features",
+            description: "All are welcome to share ideas for new features or improvements.",
+            icon: "🤝",
             color: "var(--color-orange)"
           }
         ]
@@ -45,7 +45,7 @@ const Community = () => {
           },
           {
             id: "chat",
-            title: "Discord/Slack Channel",
+            title: "Discord Channel",
             description: "Live chat for real-time collaboration and announcements.",
             icon: "📱",
             color: "var(--color-green)"
@@ -107,7 +107,7 @@ const Community = () => {
         
         <div className="community-cta fade-in">
           <button className="cta-button">
-            <span className="button-text">Join Our Discord</span>
+            <span className="button-text">Discord Channel Coming Soon!</span>
             <span className="button-glow"></span>
           </button>
           <p className="cta-subtext">Connect with thousands of quantum enthusiasts and researchers</p>

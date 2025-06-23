@@ -60,7 +60,6 @@ const Navbar = () => {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
-        {/* <div className="logo-wrapper"  onClick={scrollToTop}> */}
         <div className={`logo-wrapper ${menuOpen ? 'open' : ''}`}  onClick={scrollToTop}>
           <img src={navbarLogo} alt="DIRAC Logo" className="logo-image"/>
           <div className="logo-text-container">
@@ -80,9 +79,7 @@ const Navbar = () => {
         <ul className="nav-links desktop-nav">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#why">Why Us</a></li>
-          <li><a href="#platform">Platform</a></li>
-          <li><a href="#market">Market</a></li>
+          <li><a href="#why">Platform</a></li>
           <li><a href="#roadmap">Roadmap</a></li>
           <li><a href="#business">Business Model</a></li>
           <li><a href="#team">Team</a></li>
@@ -107,19 +104,13 @@ const Navbar = () => {
                 <span className="nav-icon">💡</span>About
               </a></li>
               <li><a href="#why" onClick={toggleMenu}>
-                <span className="nav-icon">⭐</span>Why Us
-              </a></li>
-              <li><a href="#platform" onClick={toggleMenu}>
                 <span className="nav-icon">🚀</span>Platform
               </a></li>
-              <li><a href="#market" onClick={toggleMenu}>
-                <span className="nav-icon">📈</span>Market
-              </a></li>
-            </ul>
-            <ul className="nav-links nav-column-2">
               <li><a href="#roadmap" onClick={toggleMenu}>
                 <span className="nav-icon">🗺️</span>Roadmap
               </a></li>
+            </ul>
+            <ul className="nav-links nav-column-2">
               <li><a href="#business" onClick={toggleMenu}>
                 <span className="nav-icon">💼</span>Business
               </a></li>

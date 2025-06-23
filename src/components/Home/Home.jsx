@@ -88,10 +88,10 @@ const Home = () => {
       
       <div className={`container home-content ${isMobile ? 'mobile-content' : ''}`}>
         <div className="hero-text">
-          <h1 className="fade-in">Quantum Computing for Everyone—Faster, Open, and in Your Browser.</h1>
+          <h1 className="fade-in">Agentic AI for Quantum Computing</h1>
+          <h3 className="fade-in">Unlocking Quantum’s True Potential</h3>
           <p className="fade-in-delay-1">
-            Dirac is an open, high-performance quantum computing platform built in Rust and WebAssembly.
-            Whether you're a researcher, developer, or organization, Dirac helps you explore, build, and share quantum algorithms at scale—no complex setup required.
+            Dirac is a next-generation agentic AI platform specialized for quantum computing research and development. By combining open-source AI agents with domain-specific tooling, Agent-Dirac aims to become an intelligent research assistant that accelerates discovery in quantum computing.
           </p>
         </div>
         
