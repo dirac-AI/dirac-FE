@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './WhyUs.css';
 
-// Optimized quantum particles background for mobile and desktop
 const LightQuantumBackground = () => {
   const canvasRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isMobile, setIsMobile] = useState(false);
   
-  // Check if device is mobile
   useEffect(() => {
     const checkDevice = () => {
       const mobile = window.innerWidth < 768;
@@ -17,13 +15,11 @@ const LightQuantumBackground = () => {
     
     const mobile = checkDevice();
     
-    // Set initial dimensions
     setDimensions({
       width: window.innerWidth,
       height: window.innerHeight
     });
     
-    // Debounced resize handler
     let resizeTimer;
     const handleResize = () => {
       clearTimeout(resizeTimer);
@@ -49,43 +45,35 @@ const LightQuantumBackground = () => {
     
     const ctx = canvas.getContext('2d');
     
-    // Set device pixel ratio for sharper rendering on high DPI screens
     const dpr = window.devicePixelRatio || 1;
     canvas.width = dimensions.width * dpr;
     canvas.height = dimensions.height * dpr;
     
-    // Scale the context to ensure correct drawing operations
     ctx.scale(dpr, dpr);
     
-    // Style the canvas element to match dimensions while accounting for DPI
     canvas.style.width = `${dimensions.width}px`;
     canvas.style.height = `${dimensions.height}px`;
     
-    // Reduce particle count for mobile
     const particleCount = isMobile ? 40 : 75;
     const particles = [];
     
-    // Create particles
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * dimensions.width,
         y: Math.random() * dimensions.height,
         radius: Math.random() * (isMobile ? 1.5 : 2) + 1,
         color: `rgba(99, 102, 241, ${Math.random() * 0.5 + 0.2})`,
-        speedX: Math.random() * 0.3 + 0.05, // Reduced speed
-        speedY: Math.random() * 0.3 + 0.05, // Reduced speed
+        speedX: Math.random() * 0.3 + 0.05,
+        speedY: Math.random() * 0.3 + 0.05,
         connections: []
       });
     }
     
-    // Set lower target FPS for mobile
     const targetFPS = isMobile ? 24 : 30;
     const frameInterval = 1000 / targetFPS;
     let lastFrameTime = 0;
     
-    // Check connections less frequently on mobile
     const connectionCheckInterval = isMobile ? 5 : 3;
-    // Maximum connection distance is smaller on mobile
     const maxConnectionDistance = isMobile ? 80 : 100;
     
     const animate = (timestamp) => {
@@ -96,31 +84,25 @@ const LightQuantumBackground = () => {
         
         ctx.clearRect(0, 0, dimensions.width, dimensions.height);
         
-        // Update and draw particles
         for (let i = 0; i < particles.length; i++) {
           const p = particles[i];
           
-          // Move particles
           p.x += p.speedX;
           p.y += p.speedY;
           
-          // Wrap around screen edges
           if (p.x < 0) p.x = dimensions.width;
           if (p.x > dimensions.width) p.x = 0;
           if (p.y < 0) p.y = dimensions.height;
           if (p.y > dimensions.height) p.y = 0;
           
-          // Draw particle
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
           ctx.fillStyle = p.color;
           ctx.fill();
           
-          // Find and draw connections less frequently to improve performance
           if (timestamp % connectionCheckInterval === 0) {
             p.connections = [];
             
-            // Only check a subset of particles to reduce calculations
             const checkLimit = isMobile ? Math.min(15, particles.length) : particles.length;
             
             for (let j = i + 1; j < checkLimit; j++) {
@@ -138,7 +120,6 @@ const LightQuantumBackground = () => {
             }
           }
           
-          // Draw connections
           p.connections.forEach(conn => {
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -180,38 +161,36 @@ const WhyUs = () => {
   const [isMobile, setIsMobile] = useState(false);
   const carouselRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
   const scrollEndTimer = useRef(null);
 
   const cards = [
     {
       title: "High-Performance with Rust",
-      description: "Traditional quantum libraries rely heavily on Python, which can limit performance. Dirac's core is written in Rust, a systems language known for speed and memory safety. This lets you simulate larger circuits faster and run more advanced quantum algorithms—even on modest hardware.",
-      icon: "👨‍💻"
+      description: "Leverage the speed, safety, and concurrency of Rust to build blazing-fast AI solutions. Our Rust-powered platform delivers high performance, memory efficient tools for mission-critical AI applications that demand both power and precision.",
+      icon: "⚡"
     },
     {
-      title: "WebAssembly for Instant Access",
-      description: "No installation nightmares. With WebAssembly (WASM), Dirac's simulator can run directly in your browser. Open a URL, design a quantum circuit, and see results in real time. For larger jobs, Dirac seamlessly offloads computations to cloud backends—so you choose the right environment for your needs.",
+      title: "Flexible & Future-Proof AI Integration",
+      description: "Designed to seamlessly integrate with any AI model or hardware, our solution ensures adaptability without vendor lock-in. Whether upgrading existing systems or adopting new frameworks, we provide a neutral foundation—keeping you ahead in the fast-evolving AI landscape.",
       icon: "✅"
     },
     {
-      title: "Neutral & Hardware-Agnostic",
-      description: "No vendor lock-in. Dirac integrates with multiple quantum hardware and cloud providers. Develop algorithms on our in-browser simulator, then run them on IBM, AWS Braket, IonQ, or any other supported backend. You stay in control of your quantum journey.",
-      icon: "💡"
-    },
-    {
-      title: "Open Model Dataset Hub",
-      description: "Like Hugging Face for AI, Dirac hosts an ever-growing library of community-contributed quantum models and datasets. Easily publish your latest quantum algorithm or discover and adapt existing solutions—accelerating research and avoiding 'reinventing the wheel.'",
-      icon: "❤️"
-    },
-    {
-      title: "Community-Driven",
-      description: "Join a vibrant network of developers, researchers, and enthusiasts. Exchange ideas on our discussion boards, showcase your projects in the Dirac model zoo, and learn from quantum experts worldwide. When you share, you help build the future of quantum computing—together.",
+      title: "Community-Driven Platform",
+      description: "Built by developers, for developers. Our platform thrives on community contributions, ensuring continuous innovation, transparency, and adaptability. Join a global network of AI enthusiasts shaping the future—together.",
       icon: "📈"
+    },
+    {
+      title: "Multi-Platform Agentic AI",
+      description: "Break free from silos with AI agents that operate seamlessly across devices, operating systems, and environments. Our platform enables intelligent agents to adapt, communicate, and execute tasks anywhere.",
+      icon: "💻"
+    },
+    {
+      title: "Multi-LLM Orchestration",
+      description: "Unlock the full potential of generative AI by dynamically leveraging leading LLMs in a single workflow. Our platform intelligently routes queries and combines strengths—giving you the best response for every task.",
+      icon: "👨‍💻"
     }
   ];
 
-  // Check if screen is mobile with debouncing
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -219,7 +198,6 @@ const WhyUs = () => {
 
     checkIfMobile();
     
-    // Debounce resize event for better performance
     let timeoutId;
     const handleResize = () => {
       clearTimeout(timeoutId);
@@ -233,46 +211,30 @@ const WhyUs = () => {
     };
   }, []);
 
-  // Handle touch/mouse events for smooth dragging
-  const handleTouchStart = () => {
-    setIsDragging(true);
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
-
-  // Updated scroll handler
   const handleScroll = () => {
     if (!carouselRef.current || !isMobile) return;
     
-    // Clear any existing timer
     clearTimeout(scrollEndTimer.current);
     
-    // Set a timer to detect when scrolling has ended
     scrollEndTimer.current = setTimeout(() => {
-      // Always snap to nearest card when scrolling stops
       const scrollPosition = carouselRef.current.scrollLeft;
       const cardWidth = carouselRef.current.offsetWidth;
       const newIndex = Math.round(scrollPosition / cardWidth);
       
-      // Ensure index is within bounds
       const boundedIndex = Math.max(0, Math.min(newIndex, cards.length - 1));
       
       setActiveIndex(boundedIndex);
       
-      // Always snap to the nearest card position
       const targetPosition = boundedIndex * cardWidth;
-      if (Math.abs(scrollPosition - targetPosition) > 1) { // Only scroll if not already at position
+      if (Math.abs(scrollPosition - targetPosition) > 1) {
         carouselRef.current.scrollTo({
           left: targetPosition,
           behavior: 'smooth'
         });
       }
-    }, 150); // Wait 150ms after scrolling stops
+    }, 150);
   };
 
-  // Navigate to specific card
   const navigateToCard = (index) => {
     setActiveIndex(index);
     if (carouselRef.current) {
@@ -284,7 +246,7 @@ const WhyUs = () => {
     }
   };
 
-  const QuantumCard = ({ title, description, index, icon }) => {
+  const QuantumCard = ({ title, description, icon }) => {
     return (
       <div className={`quantum-card`}>
         <div className="card-icon">{icon}</div>
@@ -305,7 +267,7 @@ const WhyUs = () => {
       <div className="container whyus-content">
         <div className="title-wrapper">
           <div className="section-header fade-in">
-            <h1>Why Dirac?</h1>
+            <h1>The Dirac Platform</h1>
             <div className="header-underline"></div>
           </div>
         </div>
@@ -316,17 +278,12 @@ const WhyUs = () => {
               className="cards-carousel" 
               ref={carouselRef}
               onScroll={handleScroll}
-              onTouchStart={handleTouchStart}
-              onTouchEnd={handleTouchEnd}
-              onMouseDown={handleTouchStart}
-              onMouseUp={handleTouchEnd}
             >
               {cards.map((card, index) => (
                 <div className="carousel-item" key={`carousel-card-${index}`}>
                   <QuantumCard 
                     title={card.title}
                     description={card.description}
-                    index={index}
                     icon={card.icon}
                   />
                 </div>
@@ -345,27 +302,23 @@ const WhyUs = () => {
           </>
         ) : (
           <div className="cards-container">
-            {/* Desktop Layout: First Row - 3 Cards */}
             <div className="cards-row first-row">
               {cards.slice(0, 3).map((card, index) => (
                 <QuantumCard 
                   key={`card-${index}`}
                   title={card.title}
                   description={card.description}
-                  index={index}
                   icon={card.icon}
                 />
               ))}
             </div>
             
-            {/* Desktop Layout: Second Row - 2 Cards (Centered) */}
             <div className="cards-row second-row">
               {cards.slice(3).map((card, index) => (
                 <QuantumCard 
                   key={`card-${index + 3}`}
                   title={card.title}
                   description={card.description}
-                  index={index + 3}
                   icon={card.icon}
                 />
               ))}

@@ -31,7 +31,6 @@
   width: 100%;
 }
 
-/* Logo wrapper and layout */
 .logo-wrapper {
   display: flex;
   flex-direction: row;
@@ -87,7 +86,6 @@
   font-size: 0.7rem;
 }
 
-/* Remove old logo styles */
 .logo {
   display: none;
 }
@@ -201,7 +199,6 @@
   visibility: visible;
 }
 
-/* Two-column grid layout for mobile nav */
 .mobile-nav-grid {
   height: 100%;
   display: flex;
@@ -212,7 +209,6 @@
   z-index: 10;
 }
 
-/* Mobile nav background effects */
 .mobile-nav-background {
   position: absolute;
   top: 0;
@@ -442,7 +438,6 @@
     padding: 0.6rem 1rem;
   }
 
-  /* Adjust mobile grid for smaller screens */
   .mobile-nav-grid {
     gap: 2rem;
   }

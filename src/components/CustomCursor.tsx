@@ -9,7 +9,6 @@ export const CustomCursor = () => {
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
   const animationFrameIdRef = useRef<number | null>(null);
 
-  // Device detection - only runs once on mount
   useEffect(() => {
     const checkDevice = () => {
       const isTouchDevice = 'ontouchstart' in window || 
@@ -20,11 +19,10 @@ export const CustomCursor = () => {
       document.body.style.cursor = isTouchDevice ? 'auto' : 'none';
     };
 
-    // Throttled resize handler
     let resizeTimeout: ReturnType<typeof setTimeout>;
     const handleResize = () => {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(checkDevice, 250); // Throttle to execute at most every 250ms
+      resizeTimeout = setTimeout(checkDevice, 250);
     };
 
     checkDevice();
@@ -36,13 +34,11 @@ export const CustomCursor = () => {
     };
   }, []);
 
-  // Mouse tracking and animation - only runs if not on mobile/tablet
   useEffect(() => {
     if (isMobileOrTablet) return;
 
-    // Debounced mousemove handler
     let lastMoveTime = 0;
-    const MOVE_THROTTLE = 5; // ms
+    const MOVE_THROTTLE = 5;
 
     const handleMouseMove = (e: MouseEvent) => {
       const now = performance.now();
@@ -52,7 +48,6 @@ export const CustomCursor = () => {
       positionRef.current = { x: e.clientX, y: e.clientY };
     };
 
-    // Optimized hover detection with element caching
     const handleHover = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const isHoverable = target.closest('button, a, [data-cursor-hover]') !== null;
@@ -60,33 +55,27 @@ export const CustomCursor = () => {
       if (isHoverable !== isHoveringRef.current) {
         isHoveringRef.current = isHoverable;
         
-        // Only modify DOM when hover state changes
         if (innerCursorRef.current) {
           innerCursorRef.current.classList.toggle('cursor-inner--hover', isHoverable);
         }
       }
     };
 
-    // Animation function using transformX/Y for better performance
     const animate = () => {
       if (outerCursorRef.current && innerCursorRef.current) {
         const { x, y } = positionRef.current;
         
-        // Use translateX/Y instead of translate3d for slightly better performance
         outerCursorRef.current.style.transform = `translate(${x}px, ${y}px)`;
         innerCursorRef.current.style.transform = `translate(${x}px, ${y}px)`;
       }
       animationFrameIdRef.current = requestAnimationFrame(animate);
     };
 
-    // Start animation
     animationFrameIdRef.current = requestAnimationFrame(animate);
 
-    // Add event listeners
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener('mouseover', handleHover, { passive: true });
 
-    // Cleanup
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener('mouseover', handleHover);
@@ -98,7 +87,6 @@ export const CustomCursor = () => {
     };
   }, [isMobileOrTablet]);
 
-  // Don't render on mobile/tablet
   if (isMobileOrTablet) return null;
 
   return (

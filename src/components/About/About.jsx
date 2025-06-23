@@ -71,7 +71,7 @@ const AboutContent = () => {
         </div>
         <div className="section-content">
           <h2>Our Vision</h2>
-          <p>To democratize quantum computing by creating an accessible, high-performance platform that removes barriers to entry. We envision a future where quantum technology is as ubiquitous as classical computing, enabling breakthroughs across science, medicine, cryptography, and artificial intelligence.</p>
+          <p>To make quantum computing accessible, intuitive, and effortless by removing barriers to entry. We envision a future where quantum technology is as seamless and widespread as classical computing—unlocking revolutionary breakthroughs in science, medicine, cryptography, artificial intelligence, and beyond.</p>
         </div>
       </div>
       
@@ -83,7 +83,7 @@ const AboutContent = () => {
         </div>
         <div className="section-content">
           <h2>Our Mission</h2>
-          <p>We're building the world's most intuitive quantum computing platform using cutting-edge WebAssembly and Rust technologies. By prioritizing performance, accessibility, and open standards, we're creating tools that empower researchers, developers, and organizations to harness quantum capabilities without specialized hardware or complex setups.</p>
+          <p>We're building a next-generation quantum computing platform, built in Rust for speed and simplicity. By breaking down barriers to adoption, we're empowering pioneers in research, AI, and security to solve tomorrow's hardest problems, today - accelerating humanity's leap into the quantum era.</p>
         </div>
       </div>
     </div>

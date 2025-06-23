@@ -111,37 +111,6 @@ section h2 {
   animation: float 6s ease-in-out infinite;
 }
 
-/* .glass-button {
-  background: var(--accent-color);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  padding: 12px 24px;
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1.1rem 2rem;
-}
-
-.glass-button:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-} */
-
-/* .header-underline {
-  height: 3px;
-  width: 80px;
-  background: linear-gradient(90deg, #6366f1, #3182ce);
-  border-radius: 2px;
-  position: relative;
-} */
-
 .header-underline::before {
   content: "";
   position: absolute;
@@ -255,5 +224,100 @@ section h2 {
 
   .section-header h1 {
     font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  * {
+    cursor: none !important;
+  }
+  
+  body,
+  html,
+  div,
+  span,
+  p,
+  h1, h2, h3, h4, h5, h6,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  img,
+  video,
+  canvas,
+  svg,
+  iframe,
+  form,
+  fieldset,
+  legend,
+  table,
+  thead,
+  tbody,
+  tfoot,
+  tr,
+  td,
+  th,
+  ul,
+  ol,
+  li,
+  dl,
+  dt,
+  dd,
+  nav,
+  header,
+  footer,
+  main,
+  section,
+  article,
+  aside {
+    cursor: none !important;
+  }
+  
+  *:hover,
+  *:focus,
+  *:active,
+  *:visited {
+    cursor: none !important;
+  }
+  
+  button:hover,
+  a:hover,
+  input:hover,
+  textarea:hover,
+  select:hover,
+  [role="button"]:hover,
+  [tabindex]:hover,
+  [onclick]:hover,
+  [data-cursor-hover]:hover {
+    cursor: none !important;
+  }
+  
+  ::selection {
+    cursor: none !important;
+  }
+  
+  ::-moz-selection {
+    cursor: none !important;
+  }
+  
+  ::-webkit-scrollbar {
+    cursor: none !important;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="search"]:focus,
+  input[type="url"]:focus,
+  input[type="tel"]:focus,
+  input[type="number"]:focus,
+  textarea:focus {
+    cursor: none !important;
+  }
+  
+  [style*="cursor"] {
+    cursor: none !important;
   }
 }

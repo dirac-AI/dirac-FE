@@ -5,8 +5,6 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import WhyUs from './components/WhyUs/WhyUs';
-import Platform from './components/Platform/Platform';
-import Market from './components/Market/Market';
 import Roadmap from './components/Roadmap/Roadmap';
 import BusinessModel from './components/BusinessModel/BusinessModel';
 import Team from './components/Team/Team';
@@ -22,8 +20,6 @@ function App() {
       <Home />
       <About />
       <WhyUs />
-      <Platform />
-      <Market />
       <Roadmap />
       <BusinessModel />
       <Team />
@@ -33,7 +29,5 @@ function App() {
     </div>
   );
 }
-
- {/*Home quantum cube is still heavy */}
 
 export default App;

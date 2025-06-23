@@ -15,7 +15,7 @@ const Contact = () => {
     message: ''
   });
 
-  const [activeTab, setActiveTab] = useState('form'); // For mobile tabs
+  const [activeTab, setActiveTab] = useState('form');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,10 +28,14 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=contact@dirac.id&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    
+    window.open(gmailUrl, '_blank');
+
     setFormStatus({
       submitted: true,
       error: false,
-      message: 'Thank you for your message! We will get back to you soon.'
+      message: 'Opening Gmail to send your message...'
     });
     
     setFormData({
@@ -67,7 +71,6 @@ const Contact = () => {
           <p className="intro-secondary">We're always open to new collaborations—hardware vendors, universities, or private sector R&D teams. Let's shape the quantum future together.</p>
         </div>
         
-        {/* Mobile Tab Navigation */}
         <div className="mobile-tabs">
           <button 
             className={`tab-button ${activeTab === 'form' ? 'active' : ''}`}
@@ -150,11 +153,12 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                
-                <button type="submit" className="submit-button">
+
+                <button type="submit" className="cta-button contact">
                   <span className="button-text">Send Message</span>
                   <span className="button-glow"></span>
                 </button>
+                
               </form>
             </div>
           </div>
@@ -164,7 +168,7 @@ const Contact = () => {
               <div className="info-card primary">
                 <div className="info-icon">✉️</div>
                 <h3>Email Us</h3>
-                <p><a href="mailto:hello@dirac.au">hello@dirac.au</a></p>
+                <p><a href="mailto:contact@dirac.id">contact@dirac.id</a></p>
               </div>
               
               <div className="info-card">

@@ -16,7 +16,7 @@ const BusinessModel = () => {
         </div>
         
         <div className="pricing-intro">
-          <p>Flexible options to support both open-source community and enterprise needs</p>
+          <p>Flexible options to support both free community and enterprise needs</p>
         </div>
         
         <div className="pricing-cards-container">
@@ -26,7 +26,7 @@ const BusinessModel = () => {
               <span className="icon-symbol">⚛️</span>
             </div>
             <h3>Freemium for Community</h3>
-            <p>Dirac's core platform is free and open-source—fueling community growth and contributions.</p>
+            <p>Dirac's core platform is free — fueling community growth and contributions.</p>
             <div className="card-decoration">
               <div className="quantum-circle"></div>
             </div>
@@ -38,15 +38,15 @@ const BusinessModel = () => {
               <span className="icon-symbol">⭐</span>
             </div>
             <h3>Premium Subscriptions</h3>
-            <p>Organizations or power users can upgrade for:</p>
+            <p>We keep core features free—premium unlocks power-ups for heavy users</p>
             <ul className="features-list">
               <li>
                 <span className="feature-bullet"></span>
-                Larger/Unlimited Simulation Quotas
+                Automatic Model Routing for Maximum Performance
               </li>
               <li>
                 <span className="feature-bullet"></span>
-                Advanced Features (noise simulation, HPC integrations, etc.)
+                Implement/Recreate Code from Paper
               </li>
             </ul>
             <div className="card-decoration">
@@ -57,10 +57,10 @@ const BusinessModel = () => {
           <div className="pricing-card consulting-card">
             <div className="card-glow"></div>
             <div className="pricing-icon">
-              <span className="icon-symbol">🔬</span>
+              <span className="icon-symbol">⚡</span>
             </div>
-            <h3>Consulting & Services</h3>
-            <p>For enterprises needing custom quantum solutions or integration support, we offer consulting, training, and professional services—helping fund further platform development.</p>
+            <h3>Priority Support for Pro Users</h3>
+            <p>Free users get community-based support, while paid subscribers enjoy faster, dedicated assistance.</p>
             <div className="card-decoration">
               <div className="quantum-circle"></div>
             </div>
@@ -69,10 +69,10 @@ const BusinessModel = () => {
           <div className="pricing-card usage-card">
             <div className="card-glow"></div>
             <div className="pricing-icon">
-              <span className="icon-symbol">📊</span>
+              <span className="icon-symbol">⏳</span>
             </div>
-            <h3>Usage-Based Quantum Hardware</h3>
-            <p>When you're ready to run on quantum hardware, we can broker access for a per-job fee—integrating seamlessly with multiple cloud providers.</p>
+            <h3>Exclusive Beta Features</h3>
+            <p>Pro users get early access to experimental tools and can shape future updates through feedback.</p>
             <div className="card-decoration">
               <div className="quantum-circle"></div>
             </div>
@@ -80,10 +80,12 @@ const BusinessModel = () => {
         </div>
         
         <div className="cta-container">
-          <button className="cta-button">
-            <span className="button-text">Contact Sales</span>
-            <span className="button-glow"></span>
-          </button>
+          <a href="#contact" className="cta-button-link">
+            <button className="cta-button">
+              <span className="button-text">Contact Sales</span>
+              <span className="button-glow"></span>
+            </button>
+          </a>
         </div>
       </div>
     </section>
