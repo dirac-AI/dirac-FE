@@ -68,7 +68,7 @@ const Contact = () => {
         
         <div className="contact-intro">
           <p>Got a question or a project in mind? Interested in enterprise solutions or a research partnership?</p>
-          <p className="intro-secondary">We're always open to new collaborations—hardware vendors, universities, or private sector R&D teams. Let's shape the quantum future together.</p>
+          <p className="intro-secondary">We're always open to new collaborations from universities, or private sector R&D teams. Let's shape the quantum future together.</p>
         </div>
         
         <div className="mobile-tabs">
