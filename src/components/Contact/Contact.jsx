@@ -28,7 +28,7 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=contact@dirac.id&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=devs@dirac.id&su=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
     
     window.open(gmailUrl, '_blank');
 
@@ -168,7 +168,7 @@ const Contact = () => {
               <div className="info-card primary">
                 <div className="info-icon">✉️</div>
                 <h3>Email Us</h3>
-                <p><a href="mailto:contact@dirac.id">contact@dirac.id</a></p>
+                <p><a href="mailto:devs@dirac.id">devs@dirac.id</a></p>
               </div>
               
               <div className="info-card">
